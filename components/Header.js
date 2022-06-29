@@ -1,6 +1,8 @@
-import { useState } from 'react'
+
+import { useState, useEffect } from 'react'
 
 // next.js
+import { useRouter } from 'next/router';
 import Link from 'next/link'
 
 // custom
@@ -13,7 +15,19 @@ import Row from './Row'
 import MobileMenu from './MobileMenu'
 
 const Header = ({menuItems}) => {
+    const router = useRouter();
     const [isMobileMenuVisible, setMobileMenuVisible] = useState(false)
+
+    const closeMenu = () => {
+        setMobileMenuVisible(false);
+    };
+
+    useEffect(() => {
+        router.events.on('routeChangeStart', closeMenu);
+
+        return () => router.events.off('routeChangeStart', closeMenu);
+    }, [router.events]);
+
     return <header>
         <Container>
             <Row justifyContent="space-between" alignItems="center">
