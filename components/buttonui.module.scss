@@ -1,0 +1,19 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+
+.btnui {
+    border: 0;
+    background-color: transparent;
+    &.menu {
+        display: inline-block;
+        @include mixins.breakpoint(md) {
+            display: none;
+        }
+    }
+    &.close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+}

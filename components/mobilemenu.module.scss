@@ -1,0 +1,28 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.mobile_menu {
+    display: flex;
+    background-color: vars.$color_green;;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .list {
+        text-align: center;
+        .item {
+            .anchor {
+                font-weight: bold;
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 1rem;
+            }
+        }
+    }
+}
