@@ -1,3 +1,5 @@
+import Head from 'next/head'
+
 import Container from '../components/Container'
 import Heading from '../components/Heading'
 import Layout from '../components/Layout'
@@ -36,6 +38,9 @@ export async function getStaticProps({ params }) {
 const BasicPageTemplate = ({pageData}) => {
     const { title, content } = pageData;
     return <Layout>
+		<Head>
+			<title>{title} | Empire Housing and Development Corporation | Syracuse, NY</title>
+		</Head>
 		<Container>
         <Heading name="h1">{title}</Heading>
         <MainContent content={content} />
