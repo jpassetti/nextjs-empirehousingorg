@@ -1,4 +1,6 @@
+import styles from './table.module.scss'
+
 const Table = ({children}) => {
-    return <table>{children}</table>
+    return <table className={styles.table}>{children}</table>
 }
 export default Table

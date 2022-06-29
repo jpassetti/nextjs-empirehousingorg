@@ -1,4 +1,6 @@
+import styles from './table.module.scss'
+
 const Tr = ({children}) => {
-    return <tr>{children}</tr>
+    return <tr className={styles.tr}>{children}</tr>
 }
 export default Tr

@@ -1,0 +1,17 @@
+.table {
+    width: 100%;
+    text-align: left;
+    border-spacing: 0;
+    max-width: 60ch;
+}
+.th {
+    font-weight: bold;
+    text-align: left;
+}
+.td {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid lightgray;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
