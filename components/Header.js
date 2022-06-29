@@ -3,7 +3,7 @@ import Container from "./Container";
 import Logo from "./Logo";
 import Menu from './Menu';
 
-const Header = () => {
+const Header = ({menuItems}) => {
     return <header>
         <Container>
             <Link href="/">
@@ -11,7 +11,7 @@ const Header = () => {
                 <Logo />
                 </a>
             </Link>
-            <Menu />
+            <Menu menuItems={menuItems} />
         </Container>
     </header>
 }

@@ -1,9 +1,9 @@
 import Header from "./Header"
 import Footer from "./Footer"
 
-const Layout = ({children}) => {
+const Layout = ({menuItems, children}) => {
     return <>
-    <Header/>
+    <Header menuItems={menuItems} />
     {children}
     <Footer />
     </>

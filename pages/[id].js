@@ -5,11 +5,11 @@ import Heading from '../components/Heading'
 import Layout from '../components/Layout'
 import MainContent from "../components/MainContent"
 
-import { getAllPageSlugs, getPageBySlug } from '../lib/api'
+import { getAllPageSlugs, getPageBySlug, getMainMenuItems } from '../lib/api'
 
 export async function getStaticPaths() {
 
-	const pages = await getAllPageSlugs()
+	const pages = await getAllPageSlugs();
 
 	const paths = pages.edges.map(edge => {
 		const { slug } = edge.node
@@ -26,18 +26,20 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
 
-	const pageData = await getPageBySlug(params.id)
+	const pageData = await getPageBySlug(params.id);
+	const menuItems = await getMainMenuItems();
+
 	return {
 		props: {
-			pageData,
+			pageData, menuItems
 		}
 	}
 
 }
 
-const BasicPageTemplate = ({pageData}) => {
+const BasicPageTemplate = ({pageData, menuItems}) => {
     const { title, content } = pageData;
-    return <Layout>
+    return <Layout menuItems={menuItems}>
 		<Head>
 			<title>{title} | Empire Housing and Development Corporation | Syracuse, NY</title>
 		</Head>
