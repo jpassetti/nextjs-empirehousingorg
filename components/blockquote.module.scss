@@ -1,0 +1,71 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.blockquote {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 1rem;
+	display: block;
+	padding-top: 1rem;
+	//padding-bottom: 1rem;
+	color: vars.$color_violet_dark;
+	.quote, p {
+		font-size: 1.1rem;
+		line-height: 1.5;
+		color: vars.$color_black;
+		margin-bottom: .5rem;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		text-align: center;
+		@include mixins.breakpoint(sm) {
+			font-size: 1.3rem;
+		}
+		@include mixins.breakpoint(md) {
+			font-size: 1.4rem;
+		}
+		&::before {
+			content: '';
+			display: block;
+			width: 5rem;
+			height: 1px;
+			background: linear-gradient(90deg, vars.$color_magenta, vars.$color_violet);
+			margin: 0 auto;
+			margin-bottom: 2rem;
+		}
+		&::after {
+			content: '';
+			display: block;
+			width: 5rem;
+			height: 1px;
+			background: linear-gradient(90deg, vars.$color_magenta, vars.$color_violet);
+			margin: 0 auto;
+			margin-top: 2rem;
+		}
+	}
+	cite, .citeName {
+		font-size: 1rem;
+		font-style: normal;
+		color: vars.$color_violet_bold;
+		padding-top: .5rem;
+		font-weight: 500;
+		//margin-bottom: .5rem;
+		display: block;
+		@include mixins.breakpoint(sm) {
+			font-size: 1.05rem;
+		}
+		@include mixins.breakpoint(md) {
+			font-size: 1.1rem;
+		}
+	}
+	.citeJob {
+		font-style: italic;
+		color: vars.$color_violet_bold;
+		margin-bottom: .5rem;
+	}
+	.citeCompany {
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		letter-spacing: 1px;
+		color: vars.$color_violet_bold;
+	}
+}

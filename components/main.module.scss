@@ -1,0 +1,12 @@
+@use '../styles/abstracts/mixins';
+
+.main {
+	//background-color: #fff;
+	width: 100%;
+	min-height: 100vh;
+	position: relative;
+	@include mixins.breakpoint(sm) {
+		width: calc(100% - 5rem);
+		margin-left: 5rem;
+	}
+}

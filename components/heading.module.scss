@@ -1,0 +1,92 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.heading {
+	@include mixins.marginAndPadding();
+	@include mixins.textAlign();
+	@include mixins.colors();
+}
+
+.heading1 {
+	font-weight: bold;
+	font-size: 1.8rem;
+	line-height: 1.1;
+	margin-bottom: 1rem;
+	@include mixins.breakpoint(sm) {
+		font-size: 2.2rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 2.8rem;
+	}
+	@include mixins.breakpoint(lg) {
+		font-size: 3.5rem;
+	}
+}
+.heading2 {
+	font-weight: 700;
+	font-size: 1.8rem;
+	line-height: 1.1;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+	@include mixins.breakpoint(sm) {
+		font-size: 2rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 2.25rem;
+	}
+	color: vars.$color_green;
+	//background-color: pink;
+	&.title {
+		font-weight: 500;
+		//margin-bottom: 1rem;
+	}
+}
+.heading3 {
+	font-weight: bold;
+	font-size: 1.3rem;
+	line-height: 1.1;
+	@include mixins.breakpoint(sm) {
+		font-size: 1.4rem;
+	}
+	@include mixins.breakpoint(md) {
+		font-size: 1.5rem;
+	}
+	//background-color: limegreen;
+	a {
+		color: inherit;
+	}
+	&.title {
+		font-weight: 400;
+		color: vars.$color_violet_bold;
+		//margin-top: .5rem;
+	}
+}
+.heading4 {
+	font-style: italic;
+	font-size: 1.125rem;
+	line-height: 1.1;
+}
+.heading5 {
+	font-size: 1rem;
+	line-height: 1.1;
+}
+.heading6 {
+	font-size: .75rem;
+	line-height: 1.1;
+}
+.category {
+	text-transform: uppercase;
+	color: vars.$color_teal_50;
+	font-family: vars.$font_secondary;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+.white {
+	color: white;
+	a {
+		color: white;
+	}
+}
+.caps {
+	text-transform: uppercase;
+}

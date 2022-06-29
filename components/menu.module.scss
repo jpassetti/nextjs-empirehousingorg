@@ -1,0 +1,27 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.menu {
+    display: none;
+    @include mixins.breakpoint(sm) {
+        display: block;
+        padding: 1rem 0;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        margin-bottom: 3rem;
+    }
+    &__list {
+       display: flex;
+    }
+    &__item {
+        padding: 0 .5rem;
+    }
+    &__anchor {
+        font-weight: bold;
+        text-decoration: none;
+        color: vars.$color_green;
+        &:hover, &:focus {
+            text-decoration: underline;
+        }   
+    }
+}

@@ -1,0 +1,22 @@
+.list_item {
+	&.row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	&.checkbox {
+		//background-color: red;
+		padding-bottom: 1rem;
+		display: flex;
+		align-items: flex-start;
+		//flex-wrap: wrap;
+		div {
+			//float: left;
+			margin-right: 1rem;
+		}
+		span {
+			//margin-left: 1rem;
+			display: block;
+			width: 100%;
+		}
+	}
+}

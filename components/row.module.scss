@@ -1,0 +1,32 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 -.5rem;
+	//width: 100%;
+	@include mixins.marginAndPadding();
+	@include mixins.justifyContent();
+	@include mixins.flexDirection();
+	@include mixins.alignItems();
+	&.sticky {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+	}
+	&.fullScreen {
+		height: 100vh;
+		//background-color: limegreen;
+		align-items: center;
+	}
+	&.bt {
+		border-top: 1px solid lightgray;
+	}
+	&.hideMobile {
+		display: none;
+		@include mixins.breakpoint(sm) {
+			display: flex;
+		}
+	}
+}

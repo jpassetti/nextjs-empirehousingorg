@@ -1,0 +1,58 @@
+$color_green: #009444;
+$color_green_hover: #006437;
+$color_green_10: #e5efec;
+$color_white: #FFFFFF;
+$color_black: #000000;
+$color_gray: #333333;
+$color_gray_light: #e5e5e5;
+$color_gray_dark: #222222;
+
+$color_violet: #7732fc;
+$color_violet_bright: #8f55ff;
+$color_violet_medium: #5600ff;
+$color_violet_bold: #5329A5;
+$color_violet_10: #ede9f6;
+$color_violet_20: #ddd4ed;
+$color_violet_30: #cbbee4;
+$color_violet_40: #baa9db;
+$color_violet_50: #a994d2;
+$color_violet_dark: #15003d;
+
+
+$color_magenta: #ec008c;
+
+
+$color_teal: #4ccAE0;
+$color_teal_10: #edfafc;
+$color_teal_20: #dbf4f9;
+$color_teal_30: #c9eff6;
+$color_teal_40: #b7eaf3;
+$color_teal_50: #a5e4ef;
+
+$color_blue: #4963DE;
+$color_blue_10: #eceffc;
+$color_blue_20: #dbe0f8;
+$color_blue_30: #c8d0f5;
+$color_blue_40: #b6c1f2;
+$color_blue_50: #a4b1ee;
+
+
+//$font_primary: 'Roboto', Arial, sans-serif;
+$font_primary: 'Poppins', sans-serif;
+$font_secondary: 'Source Code Pro', monospace;
+/*
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+font-family: 'Source Code Pro', monospace;
+*/
+$hexagon-width: 250px;
+$hexagon-height: 293px;
+$hexagon-margin: 8px;
+$hexagon-title-color: #fff;
+$hexagon-border-color: #fff;
+$hexagon-border-color--hover: #72f88e;
+$hexagon-image-color: #3ea0eb;
+$honeycomb-max-width: 1200px;
+//$honeycomb-max-width: 1124px;
+$viewport-thereshold: $hexagon-width + $hexagon-margin;

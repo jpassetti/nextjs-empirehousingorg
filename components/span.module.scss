@@ -1,0 +1,42 @@
+@use '../styles/abstracts/vars';
+@use '../styles/abstracts/mixins';
+
+
+.span {
+	&.tealGradient {
+		//display: inline-block;
+		display: inline;
+		background-image: radial-gradient(circle farthest-corner at 0 0,vars.$color_teal_20,vars.$color_teal_30 15%, vars.$color_teal_40 39%, vars.$color_teal_50 47%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+	}
+	&.violetGradient {
+		background: linear-gradient(45deg, vars.$color_magenta, vars.$color_violet_bright 60%, vars.$color_teal 90%);
+   		background-clip: text;
+   		-webkit-text-fill-color: transparent;
+		   -webkit-box-decoration-break: clone;
+		   box-decoration-break: clone;
+	}
+	&.crazy {
+		display: inline-block;
+		//display: inline;
+		background-image: radial-gradient(circle farthest-corner at 0 0,vars.$color_teal, vars.$color_magenta 65%, vars.$color_blue 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+	}
+	/*
+	&.violetGradient, &.tealGradient  {
+		display: inline-block;
+		background-image: radial-gradient(circle farthest-corner at 100% 0,#ffaccf 28%,#5cb6f8 51%,#ba75e0 87%,#dd5183 96%);
+			-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+	*/
+}
