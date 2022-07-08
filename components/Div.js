@@ -9,6 +9,18 @@ import Col from './Col'
 import Logo from './Logo'
 import Row from './Row'
 
+function get_jsx_object(splitStyles) {
+	let reformatted_css_prop
+	switch (splitStyles[0]) {
+		case 'background-color':
+			reformatted_css_prop = { backgroundColor : splitStyles[1] }
+			break;
+		default:
+			reformatted_css_prop = { backgroundColor: "transparent" }
+	}
+	return reformatted_css_prop
+}
+
 
 const Div = ({ 
 	attribs, 
@@ -38,6 +50,18 @@ const Div = ({
 		console.log({attribs});
 
 	const splitClasses = attribs ? attribs.class.split(" ") : null;
+	
+	let jsxObj = null;
+	let splitStyles = null;
+
+	if (attribs && attribs.style) {
+		splitStyles = attribs.style.split(":");
+		console.log({splitStyles});
+		jsxObj = get_jsx_object(splitStyles);
+		console.log({ jsxObj });
+	}
+	
+	
 		
 	const divClasses = cx({
 		div: true,
@@ -61,6 +85,11 @@ const Div = ({
 		[`text-align-${textAlign}`]: textAlign,
 		[`row`] : attribs ? splitClasses?.includes('wp-block-columns') : false,
 		[`col`] : attribs ? splitClasses?.includes('wp-block-column') : false,
+		[`wp-block-group`]: attribs ? splitClasses?.includes('wp-block-group') : false,
+		[`has-background`]: attribs ? splitClasses?.includes('has-background') : false,
+		[`wp-block-group__inner-container`]: attribs ? splitClasses?.includes('wp-block-group__inner-container') : false,
+		//[`wp-block-columns`]: attribs ? splitClasses?.includes('wp-block-columns') : false,
+		//[`wp-block-column`]: attribs ? splitClasses?.includes('wp-block-column') : false,
  	});
 	if (attribs && attribs[`data-component`] === "container") {
 		return <Container name={name} attribs={attribs}>{children}</Container>
@@ -73,7 +102,7 @@ const Div = ({
 	} else if (fullScreen) {
 		return <div id={id ? id : ''} name={name} className={divClasses}>{children}</div>
 	} else {
-		return <div id={id ? id : ''} name={name} className={`${divClasses} ${className}`}>{children}</div>
+		return <div id={id ? id : ''} name={name} className={`${divClasses} ${className}`} style={ jsxObj }>{children}</div>
 	}
 	
 }

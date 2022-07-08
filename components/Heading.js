@@ -28,7 +28,7 @@ const Heading = ({
 	type, 
 	textAlign, 
 }) => {
-	console.log({name});
+	//console.log({name});
 	const marginsArr = responsiveMargins ? responsiveMargins.split(" ") : null;
 	const marginsObj = {};
 	marginsArr?.forEach(string => {
