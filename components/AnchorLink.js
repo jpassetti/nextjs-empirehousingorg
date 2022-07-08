@@ -6,13 +6,13 @@ import styles from './anchorlink.module.scss'
 let cx = classNames.bind(styles)
 
 const AnchorLink = ({attribs, children, href, target, rel}) => {
-	console.log({ attribs });
+	//console.log({ attribs });
 	const newUrl = new URL(attribs.href);
-	console.log({newUrl});
+	//console.log({newUrl});
 
 	if (newUrl.host === "api.empirehousing.org") {
 		const splitPathname = newUrl.pathname.split("/");
-		console.log({splitPathname});
+		//console.log({splitPathname});
 		if (splitPathname[1] === "wp-content") {
 			// allow PDF links to media library on the api website
 			return <Link href={newUrl.href}>

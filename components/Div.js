@@ -10,7 +10,7 @@ import Logo from './Logo'
 import Row from './Row'
 
 function get_jsx_object(splitStyles) {
-	let reformatted_css_prop
+	let reformatted_css_prop = null;
 	switch (splitStyles[0]) {
 		case 'background-color':
 			reformatted_css_prop = { backgroundColor : splitStyles[1] }
