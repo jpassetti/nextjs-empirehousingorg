@@ -47,7 +47,7 @@ const Div = ({
 	id=false,
 	name
 	}) => {
-		console.log({attribs});
+		//console.log({attribs});
 
 	const splitClasses = attribs ? attribs.class.split(" ") : null;
 	
