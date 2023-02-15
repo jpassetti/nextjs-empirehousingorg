@@ -14,14 +14,13 @@ import { getPageBySlug, getMainMenuItems, getProjectsByType } from '../../lib/ap
 
 export async function getStaticProps() {
 
-	const pageData = await getPageBySlug("portfolio");
+	//const pageData = await getPageBySlug("portfolio");
     const newConstructionProjects = await getProjectsByType("new-construction");
     const rehabProjects = await getProjectsByType("vacant-housing-rehab");
 	const menuItems = await getMainMenuItems();
 
 	return {
 		props: {
-			pageData, 
             menuItems,
             newConstructionProjects,
             rehabProjects
@@ -31,19 +30,17 @@ export async function getStaticProps() {
 }
 
 const BasicPageTemplate = ({
-    pageData, 
     menuItems, 
     newConstructionProjects,
     rehabProjects
 }) => {
-    const { title, content } = pageData;
     return <Layout menuItems={menuItems}>
 		<Head>
-			<title>{title} | Empire Housing and Development Corporation | Syracuse, NY</title>
+			<title>Portfolio | Empire Housing and Development Corporation | Syracuse, NY</title>
 		</Head>
 		<Container>
-        <Heading name="h1">{title}</Heading>
-        <MainContent content={content} />
+        <Heading name="h1">Portfolio</Heading>
+        
         <Heading name="h2">New Construction</Heading>
         <Row>
         {newConstructionProjects.map(edge => {
