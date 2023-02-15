@@ -1,0 +1,12 @@
+.showcaseImage {
+    width: 100%;
+    // background-color: limegreen;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 2rem;
+    &::after {
+        content: '';
+        display: block;
+        padding-bottom: 56.25%;
+    }
+}
