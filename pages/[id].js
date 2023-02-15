@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 				id: slug,
 			}
 		}
+		
 	})
 	return {
 		paths,
