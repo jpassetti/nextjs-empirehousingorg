@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 import Container from '../../../components/Container'
@@ -7,16 +8,17 @@ import Layout from '../../../components/Layout'
 import MainContent from "../../../components/MainContent"
 import ShowcaseImage from '../../../components/ShowcaseImage'
 
-import { getAllPageSlugs, getPageBySlug, getMainMenuItems, getAllProjectSlugs, getProjectBySlug } from '../../../lib/api'
+import { getAllPageSlugs, getPageBySlug, getMainMenuItems, getAllProjectSlugs, getProjectBySlug, getAllProjectTypes, getAllConstructionProjects } from '../../../lib/api'
 
 export async function getStaticPaths() {
 
-	const projects = await getAllProjectSlugs();
+	const constructionProjects = await getAllConstructionProjects();
 
-	const paths = projects.map(edge => {
-		const { slug } = edge.node
+	const paths = constructionProjects.map(edge => {
+		const { slug, projectTypes } = edge.node;
 		return {
 			params: {
+				projectType: projectTypes.edges[0].node.slug,
 				id: slug,
 			}
 		}
@@ -40,15 +42,15 @@ export async function getStaticProps({ params }) {
 }
 
 const BasicPageTemplate = ({pageData, menuItems}) => {
-    const { title, content, featuredImage } = pageData;
+    const { title, content, featuredImage, projectTypes } = pageData;
     return <Layout menuItems={menuItems}>
 		<Head>
 			<title>{title} | Empire Housing and Development Corporation | Syracuse, NY</title>
 		</Head>
 		<Container>
         <Heading name="h5" marginBottom="4"><Link href="/portfolio" ><a style={{ "color" : "red"}}>&laquo; Back to portfolio</a></Link></Heading>
-        <Heading name="h3" marginBottom="1" caps>Vacant Housing Rehab</Heading>
-            <Heading name="h1">{title}</Heading>
+        <Heading name="h3" marginBottom="1" caps>{projectTypes.edges[0].node.name}</Heading>
+            <Heading name="h1" marginTop="1">{title}</Heading>
             {featuredImage &&
                 <ShowcaseImage 
                     src={featuredImage.node.sourceUrl}
@@ -60,6 +62,7 @@ const BasicPageTemplate = ({pageData, menuItems}) => {
             {content &&
                     <MainContent content={content} />
             }
+       
 		</Container>
     </Layout>
 }

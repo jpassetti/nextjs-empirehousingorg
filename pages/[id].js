@@ -10,7 +10,7 @@ import Paragraph from '../components/Paragraph'
 import Row from '../components/Row'
 import Section from '../components/Section'
 
-import { getAllPageSlugs, getPageBySlug, getMainMenuItems, getProjectTypes } from '../lib/api'
+import { getAllPageSlugs, getPageBySlug, getMainMenuItems, getStaffTypes } from '../lib/api'
 
 export async function getStaticPaths() {
 
@@ -34,17 +34,17 @@ export async function getStaticProps({ params }) {
 
 	const pageData = await getPageBySlug(params.id);
 	const menuItems = await getMainMenuItems();
-	const projectTypes = await getProjectTypes();
+	const staffTypes = await getStaffTypes();
 
 	return {
 		props: {
-			pageData, menuItems, projectTypes
+			pageData, menuItems, staffTypes
 		}
 	}
 
 }
 
-const BasicPageTemplate = ({pageData, menuItems, projectTypes}) => {
+const BasicPageTemplate = ({pageData, menuItems, staffTypes}) => {
     const { title, slug, content } = pageData;
     return <Layout menuItems={menuItems}>
 		<Head>
@@ -53,7 +53,7 @@ const BasicPageTemplate = ({pageData, menuItems, projectTypes}) => {
 		<Container>
         <Heading name="h1">{title}</Heading>
         <MainContent content={content} />
-		{slug === "about-us" && projectTypes.map(edge => {
+		{slug === "about-us" && staffTypes.map(edge => {
                 const {node} = edge;
                 const {name, staffMembers} = node;
                 return  <Section>

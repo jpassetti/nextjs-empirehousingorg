@@ -9,21 +9,22 @@ import Layout from '../../components/Layout'
 import MainContent from "../../components/MainContent"
 import Row from "../../components/Row"
 
-import { getPageBySlug, getMainMenuItems, getProjectsByType } from '../../lib/api'
+import { getPageBySlug, getMainMenuItems, getAllProjectTypes } from '../../lib/api'
+import { Fragment } from 'react'
 
 
 export async function getStaticProps() {
 
 	//const pageData = await getPageBySlug("portfolio");
-    const newConstructionProjects = await getProjectsByType("new-construction");
-    const rehabProjects = await getProjectsByType("vacant-housing-rehab");
+   // const newConstructionProjects = await getProjectsByType("new-construction");
+   // const rehabProjects = await getProjectsByType("vacant-housing-rehab");
+   const projectTypes = await getAllProjectTypes();
 	const menuItems = await getMainMenuItems();
 
 	return {
 		props: {
             menuItems,
-            newConstructionProjects,
-            rehabProjects
+            projectTypes
 		}
 	}
 
@@ -31,8 +32,7 @@ export async function getStaticProps() {
 
 const BasicPageTemplate = ({
     menuItems, 
-    newConstructionProjects,
-    rehabProjects
+    projectTypes
 }) => {
     return <Layout menuItems={menuItems}>
 		<Head>
@@ -40,50 +40,36 @@ const BasicPageTemplate = ({
 		</Head>
 		<Container>
         <Heading name="h1">Portfolio</Heading>
-        
-        <Heading name="h2">New Construction</Heading>
-        <Row>
-        {newConstructionProjects.map(edge => {
-            const { node } = edge;
-            return <Col sm="6" md="4">
-                {node.featuredImage &&
-                 <Link href={`/portfolio/new-construction/${node.slug}`}>
-                 <a>
-                    <Image 
-                        src={node.featuredImage.node.sourceUrl}
-                        alt={node.featuredImage.node.altText}
-                        width={node.featuredImage.node.mediaDetails.width}
-                        height={node.featuredImage.node.mediaDetails.height}
-                    />
-                    </a></Link>
-                }
-                <Heading name="h3" marginTop="1"><Link href={`/portfolio/new-construction/${node.slug}`}>
-                 <a>{node.title}</a></Link></Heading>
-                </Col>
-        })} 
-        </Row>
-        <Heading name="h2">Vacant Housing Rehab</Heading>
-        <Row>
-        {rehabProjects.map(edge => {
-            const { node } = edge;
-            return <Col sm="6" md="4">
-                {node.featuredImage &&
-                    <Link href={`/portfolio/vacant-housing-rehab/${node.slug}`}>
-                        <a>
-                    <Image 
-                        src={node.featuredImage.node.sourceUrl}
-                        alt={node.featuredImage.node.altText}
-                        width={node.featuredImage.node.mediaDetails.width}
-                        height={node.featuredImage.node.mediaDetails.height}
-                    />
-                    </a>
-                    </Link>
-                }
-                <Heading name="h3" marginTop="1"><Link href={`/portfolio/vacant-housing-rehab/${node.slug}`}>
-                        <a>{node.title}</a></Link></Heading>
-                </Col>
-        })} 
-        </Row>
+        {projectTypes.map((projectType, index) => {
+            const {name, slug:projectTypeSlug, constructionProjects} = projectType.node;
+            return <div key={`section${index}`}>
+                <Heading name="h2">{name}</Heading>
+                <Row>
+                {constructionProjects.edges.map((edge, index) => {
+                    const { node } = edge;
+                    const { title, slug:constructionProjectSlug, featuredImage } = node;
+                    return <Col sm="6" md="4" key={index}>
+                        {featuredImage &&
+                            <Link href={`/portfolio/${projectTypeSlug}/${constructionProjectSlug}`}>
+                                <a>
+                                <Image 
+                                    src={featuredImage.node.sourceUrl}
+                                    alt={featuredImage.node.altText}
+                                    width={featuredImage.node.mediaDetails.width}
+                                    height={featuredImage.node.mediaDetails.height}
+                                />
+                            </a>
+                            </Link>
+                        }
+                         <Heading name="h3">
+                         <Link href={`/portfolio/${projectTypeSlug}/${constructionProjectSlug}`}>
+                            <a>{title}</a>
+                        </Link></Heading>
+                        </Col>
+                })} 
+                </Row>
+            </div>
+        })}
 		</Container>
     </Layout>
 }
